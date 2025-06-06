@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
@@ -18,7 +17,7 @@ const Hero = ({ data }: HeroProps) => {
   };
 
   const name = data?.name || "Software Developer";
-  const title = data?.title || "Specializing in 3DX, Java & Modern Web Technologies";
+  const title = "3DEXPERIENCE CONSULTANT";
   const summary = data?.summary || "Expert in ENOVIA, Widget Development, AG Grid, AG Charts, Plotly.js, JavaScript, Vue, and Vuetify. Passionate about creating innovative solutions and delivering exceptional user experiences.";
 
   return (

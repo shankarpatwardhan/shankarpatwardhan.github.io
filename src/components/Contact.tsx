@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
-const Contact = () => {
+interface ContactProps {
+  data?: {
+    name: string;
+    title: string;
+    email: string;
+    location: string;
+    summary: string;
+  };
+}
+
+const Contact = ({ data }: ContactProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,8 +44,8 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email",
-      value: "your.email@example.com",
-      href: "mailto:your.email@example.com"
+      value: data?.email || "your.email@example.com",
+      href: `mailto:${data?.email || "your.email@example.com"}`
     },
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
@@ -47,7 +56,7 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Location",
-      value: "Your City, Country",
+      value: data?.location || "Your City, Country",
       href: "#"
     }
   ];
