@@ -5,8 +5,19 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github } from 'lucide-react';
 
-const Projects = () => {
-  const projects = [
+interface ProjectsProps {
+  data?: Array<{
+    title: string;
+    description: string;
+    technologies: string[];
+    features: string[];
+    demoUrl?: string;
+    sourceUrl?: string;
+  }>;
+}
+
+const Projects = ({ data }: ProjectsProps) => {
+  const projects = data || [
     {
       title: "ENOVIA Widget Suite",
       description: "A comprehensive collection of custom widgets for ENOVIA platform that enhances user productivity and streamlines PLM workflows. Features include advanced search capabilities, data visualization, and workflow automation.",
@@ -26,22 +37,9 @@ const Projects = () => {
       technologies: ["Vue.js", "Vuetify", "AG Grid", "AG Charts", "Plotly.js"],
       features: [
         "Real-time data updates",
-        "Interactive charts and graphs",
+        "Interactive charts and graphs", 
         "Advanced filtering and sorting",
         "Export to multiple formats"
-      ],
-      demoUrl: "#",
-      sourceUrl: "#"
-    },
-    {
-      title: "Enterprise Java Application",
-      description: "Scalable enterprise application built with Spring Boot and modern frontend technologies. Includes user management, reporting modules, and integration with multiple databases.",
-      technologies: ["Java", "Spring Boot", "Vue.js", "PostgreSQL", "REST APIs"],
-      features: [
-        "Microservices architecture",
-        "Role-based access control",
-        "Comprehensive reporting system",
-        "API documentation with Swagger"
       ],
       demoUrl: "#",
       sourceUrl: "#"
@@ -60,7 +58,7 @@ const Projects = () => {
 
         <div className="grid lg:grid-cols-1 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="hover-scale transition-all duration-300">
+            <Card key={index} className="hover-scale transition-all duration-300 hover:shadow-xl">
               <CardHeader>
                 <CardTitle className="text-2xl">{project.title}</CardTitle>
               </CardHeader>
@@ -83,7 +81,11 @@ const Projects = () => {
                   <h4 className="font-semibold mb-3">Technologies:</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary">
+                      <Badge 
+                        key={techIndex} 
+                        variant="secondary"
+                        className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                      >
                         {tech}
                       </Badge>
                     ))}
@@ -91,11 +93,11 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-4 pt-4">
-                  <Button variant="default" className="flex items-center gap-2">
+                  <Button variant="default" className="flex items-center gap-2 hover:shadow-md transition-shadow">
                     <ExternalLink size={16} />
                     Live Demo
                   </Button>
-                  <Button variant="outline" className="flex items-center gap-2">
+                  <Button variant="outline" className="flex items-center gap-2 hover:shadow-md transition-shadow">
                     <Github size={16} />
                     Source Code
                   </Button>

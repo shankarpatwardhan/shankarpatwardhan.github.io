@@ -3,31 +3,38 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-const Skills = () => {
-  const skillCategories = [
+interface SkillsProps {
+  data?: Array<{
+    category: string;
+    technologies: string[];
+  }>;
+}
+
+const Skills = ({ data }: SkillsProps) => {
+  const skillCategories = data || [
     {
-      title: "3D & PLM Technologies",
-      skills: ["3DX", "ENOVIA", "Widget Development", "PLM Solutions", "CAD Integration"]
+      category: "3D & PLM Technologies",
+      technologies: ["3DX", "ENOVIA", "Widget Development", "PLM Solutions", "CAD Integration"]
     },
     {
-      title: "Programming Languages",
-      skills: ["Java", "JavaScript", "TypeScript", "Python", "SQL"]
+      category: "Programming Languages", 
+      technologies: ["Java", "JavaScript", "TypeScript", "Python", "SQL"]
     },
     {
-      title: "Frontend Technologies",
-      skills: ["Vue.js", "Vuetify", "HTML5", "CSS3", "Responsive Design"]
+      category: "Frontend Technologies",
+      technologies: ["Vue.js", "Vuetify", "HTML5", "CSS3", "Responsive Design"]
     },
     {
-      title: "Data Visualization",
-      skills: ["AG Grid", "AG Charts", "Plotly.js", "D3.js", "Chart.js"]
+      category: "Data Visualization",
+      technologies: ["AG Grid", "AG Charts", "Plotly.js", "D3.js", "Chart.js"]
     },
     {
-      title: "Backend & Databases",
-      skills: ["Spring Boot", "REST APIs", "PostgreSQL", "Oracle", "MongoDB"]
+      category: "Backend & Databases",
+      technologies: ["Spring Boot", "REST APIs", "PostgreSQL", "Oracle", "MongoDB"]
     },
     {
-      title: "Tools & DevOps",
-      skills: ["Git", "GitLab", "Docker", "Jenkins", "Maven", "npm"]
+      category: "Tools & DevOps",
+      technologies: ["Git", "GitLab", "Docker", "Jenkins", "Maven", "npm"]
     }
   ];
 
@@ -43,14 +50,18 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="hover-scale transition-all duration-300">
+            <Card key={index} className="hover-scale transition-all duration-300 hover:shadow-lg">
               <CardHeader>
-                <CardTitle className="text-xl">{category.title}</CardTitle>
+                <CardTitle className="text-xl">{category.category}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge key={skillIndex} variant="secondary" className="text-sm">
+                  {category.technologies.map((skill, skillIndex) => (
+                    <Badge 
+                      key={skillIndex} 
+                      variant="secondary" 
+                      className="text-sm hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+                    >
                       {skill}
                     </Badge>
                   ))}

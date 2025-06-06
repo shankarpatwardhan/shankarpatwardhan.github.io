@@ -3,7 +3,14 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Code2, Database, Globe, Zap } from 'lucide-react';
 
-const About = () => {
+interface AboutProps {
+  data?: {
+    name: string;
+    summary: string;
+  };
+}
+
+const About = ({ data }: AboutProps) => {
   const highlights = [
     {
       icon: <Code2 className="h-8 w-8 text-primary" />,
@@ -17,7 +24,7 @@ const About = () => {
     },
     {
       icon: <Globe className="h-8 w-8 text-primary" />,
-      title: "Modern Web Technologies",
+      title: "Modern Web Technologies", 
       description: "Proficient in Vue.js, JavaScript, and modern frontend frameworks"
     },
     {
@@ -26,6 +33,8 @@ const About = () => {
       description: "Expert in AG Grid, AG Charts, and Plotly.js for complex data presentations"
     }
   ];
+
+  const summary = data?.summary || "As a software developer with deep expertise in 3DX and ENOVIA platforms, I specialize in creating robust enterprise solutions that bridge the gap between complex backend systems and intuitive user interfaces.";
 
   return (
     <section id="about" className="py-20 bg-background">
@@ -42,9 +51,7 @@ const About = () => {
           <div>
             <h3 className="text-2xl font-semibold mb-6">My Journey</h3>
             <p className="text-muted-foreground mb-4">
-              As a software developer with deep expertise in 3DX and ENOVIA platforms, I specialize in 
-              creating robust enterprise solutions that bridge the gap between complex backend systems 
-              and intuitive user interfaces.
+              {summary}
             </p>
             <p className="text-muted-foreground mb-4">
               My experience spans from developing custom widgets and integrations in ENOVIA to building 
@@ -59,9 +66,9 @@ const About = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {highlights.map((item, index) => (
-              <Card key={index} className="hover-scale transition-all duration-300">
+              <Card key={index} className="hover-scale transition-all duration-300 hover:shadow-lg group">
                 <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
+                  <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <h4 className="font-semibold mb-2">{item.title}</h4>

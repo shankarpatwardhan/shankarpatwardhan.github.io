@@ -4,8 +4,20 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin } from 'lucide-react';
 
-const Experience = () => {
-  const experiences = [
+interface ExperienceProps {
+  data?: Array<{
+    title: string;
+    company: string;
+    period: string;
+    location: string;
+    description: string;
+    achievements: string[];
+    technologies: string[];
+  }>;
+}
+
+const Experience = ({ data }: ExperienceProps) => {
+  const experiences = data || [
     {
       title: "Senior Software Developer",
       company: "Enterprise Solutions Inc.",
@@ -31,19 +43,6 @@ const Experience = () => {
         "Optimized application performance resulting in 50% faster load times"
       ],
       technologies: ["Vue.js", "Vuetify", "AG Charts", "JavaScript", "Node.js"]
-    },
-    {
-      title: "Junior Software Engineer",
-      company: "Digital Solutions Corp.",
-      period: "2017 - 2019",
-      location: "City, Country",
-      description: "Started career focusing on Java development and web technologies. Gained expertise in enterprise software development and database management.",
-      achievements: [
-        "Contributed to large-scale Java applications",
-        "Learned enterprise software development best practices",
-        "Developed foundational skills in web technologies"
-      ],
-      technologies: ["Java", "Spring Boot", "JavaScript", "SQL", "HTML/CSS"]
     }
   ];
 
@@ -59,7 +58,7 @@ const Experience = () => {
 
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <Card key={index} className="hover-scale transition-all duration-300">
+            <Card key={index} className="hover-scale transition-all duration-300 hover:shadow-lg">
               <CardContent className="p-8">
                 <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                   <div>
@@ -96,7 +95,7 @@ const Experience = () => {
                   <h5 className="font-semibold mb-3">Technologies Used:</h5>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline">
+                      <Badge key={techIndex} variant="outline" className="hover:bg-secondary">
                         {tech}
                       </Badge>
                     ))}
