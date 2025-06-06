@@ -7,15 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
-interface ContactProps {
-  data?: {
-    name: string;
-    email: string;
-    location: string;
-  };
-}
-
-const Contact = ({ data }: ContactProps) => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,8 +35,8 @@ const Contact = ({ data }: ContactProps) => {
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email",
-      value: data?.email || "your.email@example.com",
-      href: `mailto:${data?.email || "your.email@example.com"}`
+      value: "your.email@example.com",
+      href: "mailto:your.email@example.com"
     },
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
@@ -55,7 +47,7 @@ const Contact = ({ data }: ContactProps) => {
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Location",
-      value: data?.location || "Your City, Country",
+      value: "Your City, Country",
       href: "#"
     }
   ];
