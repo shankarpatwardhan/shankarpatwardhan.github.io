@@ -44,8 +44,8 @@ const Contact = ({ data }: ContactProps) => {
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email",
-      value: data?.email || "your.email@example.com",
-      href: `mailto:${data?.email || "your.email@example.com"}`
+      value: data?.email || "patwardhan@zohomail.in",
+      href: `mailto:${data?.email || "patwardhan@zohomail.in"}`
     },
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
