@@ -50,8 +50,8 @@ const Contact = ({ data }: ContactProps) => {
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      value: "+91 8454888319",
+      href: "tel:+918454888319"
     },
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
